@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %} Appoinment {% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+        
+Doctor :- {{details.username}}
+        <br>
+       specification :- {{details.specification}}
+        <br>
+       Date :- {{details.add_date}}
+<br>
+       Appoinment Start Time :- {{details.start_time}}
+    <br>    
+       Appoinment end Time :- {{details.end_time}}
+        
+        
+    
+</div>
+
+{% endblock %}
+

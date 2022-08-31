@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %} Read Blog {% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <h1>Title - {{blog.title}}</h1>
+    <div class="container-fluid mt-3 mb-4 p-0">
+
+        <span> - {{blog.add_date}}</span>
+    </div>
+    <hr>
+    {{blog.content | safe}}
+
+</div>
+
+{% endblock %}

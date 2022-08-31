@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %} Blog {% endblock %}
+
+{% block content %}
+
+{% if blogs %}
+
+  <div class="text-center mt-5 mb-5">
+    <h1>Blogs</h1>
+  </div>
+
+<section id="gallery">
+  <div class="container">
+    <div class="row">
+      {% for i in blogs %}
+
+      {% if i.draft == False %}
+
+      <div class="col-sm-12 col-md-12 col-lg-12 mb-4">
+        <div class="card border-0 border-bottom ">
+            <h5 class="card-body">Titile - {{i.title}}</h5>
+          <img style=" width: 100%;height: 30vw;object-fit: cover;" src="/media/{{i.image}}" alt=""
+            class="card-img-top">
+          <div class="card-body">
+            <p>
+              {{i.summary | truncatechars:15}}
+            </p>
+            <a href="{% url 'read' i.slug %}" class="btn btn-outline-success btn-sm">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      {% endif %}
+
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+
+{% else %}
+
+<div class="container">
+  <h1>Currenty there is no blogs.......</h1>
+</div>
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,62 @@
+<header style="background-color: white;" class="p-2">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start py-3 border-bottom">
+      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+          <use xlink:href="#bootstrap"></use>
+        </svg>
+      </a>
+
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="/" class="nav-link px-2 link-dark">Home</a></li>
+        <li><a href="{% url 'b' %}" class="nav-link px-2 link-dark">Blog</a></li>
+        
+     
+
+        <li>
+
+          
+          <div class="dropdown">
+            <a class="nav-link dropdown-toggle link-dark" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Category
+            </a>
+            <ul class="dropdown-menu">
+
+              {% for i in category %}
+
+              <li><a class="dropdown-item" href="{% url 'blogcategory' i.slug %}">{{i.title}}</a></li>
+
+              {% endfor %}
+          
+            </ul>
+          </div>
+
+        </li>
+
+        {% if request.user.profile.type == 'Patient' %}
+
+            <li><a href="{% url 'doctor' %}" class="nav-link px-2 link-dark">Doctor</a></li>
+
+
+            {% endif %}
+
+        {% if request.user.is_authenticated %}
+
+        <li><a href="{% url 'd' %}" class="nav-link px-2 link-dark">Dashboard</a></li>
+        <li><a class="nav-link px-2 link-dark" href="{% url 'logout' %}">Logout</a></li>
+
+        {% else %}
+
+        <li><a class="nav-link px-2 link-dark" href="{% url 's' %}">Sign In</a></li>
+
+        <li><a class="nav-link px-2 link-dark" href="{% url 'l' %}">Login</a></li>
+
+        {% endif %}
+
+      </ul>
+
+      
+    </div>
+  </div>
+</header>

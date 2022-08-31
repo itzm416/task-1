@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %} Appoinment {% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <form method="post" enctype="multipart/form-data">
+        
+        {% csrf_token %}
+
+        {{form.media}}
+        {{form.as_p}}
+        
+        <button type="submit" class="btn btn-primary btn-block">Book Appointment</button>
+        
+    </form>
+    
+</div>
+
+{% endblock %}
+
